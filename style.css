@@ -1,0 +1,28 @@
+body{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+.puzzle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.row{
+    display: flex;
+}
+.cell{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:1px black solid;
+    width:4vw;
+    height:4vw;
+}
+
+.candidates{
+    font-size: 8px;
+    display:flex;
+
+}

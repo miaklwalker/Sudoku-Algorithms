@@ -1,0 +1,64 @@
+// 
+
+Refactor the Puzzle Class And Cell And Group Class
+
+puzzle will hold the master list , 
+
+groups will hold a list of id's 
+
+cells will hold a value 
+
+The Finders will all directly work with puzzle and master list 
+
+This should help allievate some of the current source of truth woes 
+
+classes 
+    Cell 
+        value
+    Group
+        Members
+    Puzzle
+        Rows
+        Columns
+        Groups
+        MasterList
+        Finders
+    Finders -> Finder
+        FilterPossible()
+
+
+
+
+find all available in a grid ,
+
+then for each possible value left in grid 
+
+figure out what cell can hold that value
+
+if only on cell can hold that value assign that cell the value 
+
+
+puzzle for each group
+    neededValues = []
+    candidates = {
+        1 : [member]
+        2
+        3
+        4
+        ...
+    }
+    group for each member 
+        add member potentials to needed neededValues
+    neededValues for each value
+        group for each member 
+            if(member potential has neededValue)
+                counter + 1
+
+
+
+
+
+
+
+
+
