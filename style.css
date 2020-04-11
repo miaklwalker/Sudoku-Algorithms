@@ -17,12 +17,26 @@ body{
     justify-content: center;
     align-items: center;
     border:1px black solid;
-    width:4vw;
-    height:4vw;
+    width:5vw;
+    height:5vw;
+    font-weight: 900;
+    color:black;
 }
 
 .candidates{
+    color:rgb(173, 60, 32);
     font-size: 8px;
     display:flex;
 
+}
+
+.output{
+    position: absolute;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.output>input{
+    width:10vw;
 }

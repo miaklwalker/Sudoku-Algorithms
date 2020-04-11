@@ -1,20 +1,34 @@
 import Finder from '../finder.js'
-import rowInferenceSolver from './rowInferenceSolver.js';
-import columnInferenceSolver from './columnInferenceSolver.js';
-import groupInferenceSolver from './groupInferenceSolver.js';
 
-export default class inferenceTheorySolver extends Finder {
+export default class InferenceSolver extends Finder {
     constructor () {
-        super('humanTheorySolver')
-        this.solvers = [
-            new rowInferenceSolver(),
-            new columnInferenceSolver(),
-            new groupInferenceSolver(),
-        ]
+        super('inferenceSolver')
     }
-    findPossible(puzzle , callback){
-        this.solvers.forEach( solver =>{
-            solver.findPossible(puzzle,callback);
+    findPossible(group,callback){
+        group.forEach(group => {
+            let groupPossible = new Set();
+            let candidates = {}
+
+            group.members.forEach(member=>{
+                let cell = callback(member);
+                cell.potentials.forEach(potential=>groupPossible.add(potential))
+            })
+
+            for(let value of groupPossible.values()){
+                candidates[value] = [];
+            }
+
+            for(let neededValue in candidates){
+                group.members.forEach(member=>{
+                    let cell = callback(member);
+                    if(cell.potentials.has(+neededValue)){
+                        candidates[neededValue].push(cell)
+                    }
+                })
+                if(candidates[neededValue].length === 1){
+                    candidates[neededValue][0].value = +neededValue;
+                }
+            }
         });
     }
 }

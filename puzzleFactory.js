@@ -10,14 +10,14 @@ export default function puzzleFactory(puzzleString){
     
     for(let type in puzzleConfig){
 
-        const typeString = puzzleConfig[type]
-        const groups = []
+        const typeString = puzzleConfig[type];
+        const groups = [];
 
         for ( let i = 0 ; i < 9 ; i++ ){
             let group = new Group();
 
             for ( let j = 0 ; j < 9 ; j++){
-                let cellID = id[type][j + (i * 9)]
+                let cellID = id[type][j + (i * 9)];
                 
                 group.addMember(cellID);
 
@@ -28,7 +28,7 @@ export default function puzzleFactory(puzzleString){
             }
             groups.push(group);
         }
-        parsedPuzzle[type]=groups
+        parsedPuzzle[type]=groups;
     
     }
     return parsedPuzzle;

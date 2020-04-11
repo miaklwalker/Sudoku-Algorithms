@@ -52,7 +52,7 @@ export default class SudokuPuzzle {
     }
     solvePuzzle(){
         let runs = 0
-        while(this.solved() === false && runs < 100){
+        while(this.solved() === false && runs < 1){
             runs++
             this.findPossible();
             this.solveLayer();
