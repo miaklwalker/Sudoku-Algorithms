@@ -1,9 +1,8 @@
 import Cell from "./cell.js";
 
 export default class MasterList {
-    constructor(){
-        this.cells = this.init();
-        this.ran = false;
+    constructor(config){
+        this.cells = config||this.init();
     }
     init(){
         let cells = {}

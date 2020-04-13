@@ -1,7 +1,7 @@
 import puzzleFactory from "./puzzleFactory.js";
 import humanTheorySolver from "./wrappers/humanTheorySolver.js";
 import inferenceTheorySolver from "./wrappers/inferenceTheorySolver.js";
-import IntersectionSolver from "./finders/intersectionSolver.js";
+
 
 const puzzles = [
     //Human Theory
@@ -28,13 +28,14 @@ const puzzles = [
 
 ]
 
-function displayPuzzle(cells) {
+export function displayPuzzle(cells) {
     for (let i = 0; i < 81; i++) {
         let display = document.getElementById(`${i}`)
         if (cells[i].value !== 0) {
             display.innerText = cells[i].value;
         } else {
             display.classList.add('candidates')
+            display.innerText = ''
             cells[i].potentials.forEach(value => {
                 display.innerText += value
             })
@@ -50,11 +51,10 @@ puzzles.forEach(puzzleString => {
     //puzzle.logging = true;
     puzzle.addFinderAlgorithm(new humanTheorySolver());
     puzzle.addFinderAlgorithm(new inferenceTheorySolver());
-    puzzle.addFinderAlgorithm(new IntersectionSolver());
     let moves = puzzle.solvePuzzle();
     console.log(moves)
-   // let movesDisplay = document.getElementById('moves');
-    //movesDisplay.value = moves;
-    //displayPuzzle(puzzle.masterList.cells);
+    let movesDisplay = document.getElementById('moves');
+    movesDisplay.value = moves;
+    displayPuzzle(puzzle.masterList.cells);
 
 })

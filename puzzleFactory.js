@@ -9,10 +9,8 @@ export default function puzzleFactory(puzzleString){
     let parsedPuzzle = new SudokuPuzzle()
     
     for(let type in puzzleConfig){
-
         const typeString = puzzleConfig[type];
         const groups = [];
-
         for ( let i = 0 ; i < 9 ; i++ ){
             let group = new Group();
 

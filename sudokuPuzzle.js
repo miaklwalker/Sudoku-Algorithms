@@ -1,5 +1,6 @@
 import MasterList from './masterList.js';
 
+
 export default class SudokuPuzzle {
     constructor(){
         this.finders = [];
@@ -18,10 +19,24 @@ export default class SudokuPuzzle {
         return this.masterList.cells[id];
     }
 
-    addFinderAlgorithm(finder){
+    addFinderAlgorithm(finder,toStart=0){
+        if(toStart === 0) {
         this.finders.push(finder);
+        }else{
+        this.finders.unshift(finder)
+        }
         this[finder.NAME] = finder;
     }
+    removeFinderAlgorithm(toStart=0){
+        let finder;
+        if(toStart === 0) {
+        finder = this.finders.pop(finder);
+        }else{
+        finder = this.finders.shift(finder)
+        }
+        delete this[finder.NAME]
+    }
+
 
     findPossible(){
         this.finders.forEach(finder=>{
@@ -44,7 +59,6 @@ export default class SudokuPuzzle {
             if(cell.potentials.size === 1){
                 let value = cell.potentials.values().next().value;
                 if(value !== 0){
-                this.logging && console.info('solved by Human Theory Solver');
                 cell.value = value
                 }
             }
@@ -52,7 +66,7 @@ export default class SudokuPuzzle {
     }
     solvePuzzle(){
         let runs = 0
-        while(this.solved() === false && runs < 1){
+        while(this.solved() === false && runs < 50){
             runs++
             this.findPossible();
             this.solveLayer();
