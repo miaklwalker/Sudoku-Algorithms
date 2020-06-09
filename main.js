@@ -48,11 +48,9 @@ export function displayPuzzle(cells) {
 
 puzzles.forEach(puzzleString => {
     let puzzle = puzzleFactory(puzzleString);
-    //puzzle.logging = true;
     puzzle.addFinderAlgorithm(new humanTheorySolver());
     puzzle.addFinderAlgorithm(new inferenceTheorySolver());
     let moves = puzzle.solvePuzzle();
-    console.log(moves)
     let movesDisplay = document.getElementById('moves');
     movesDisplay.value = moves;
     displayPuzzle(puzzle.masterList.cells);
