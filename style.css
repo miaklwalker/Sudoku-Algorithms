@@ -12,6 +12,9 @@ body{
 .row{
     display: flex;
 }
+.row:nth-child(3n){
+    border-bottom: 3px solid black;
+}
 .cell{
     display: flex;
     justify-content: center;
@@ -22,7 +25,9 @@ body{
     font-weight: 900;
     color:black;
 }
-
+.cell:nth-child(3n){
+    border-right: 3px solid black;
+}
 .candidates{
     color:rgb(173, 60, 32);
     font-size: 8px;
@@ -32,11 +37,16 @@ body{
 
 .output{
     position: absolute;
-    top: 5%;
+    top: 15%;
+    left: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size:26px;
 }
 .output>input{
     width:10vw;
+    height:10vh;
+    font-size: 36px;
+    text-align: center;
 }
